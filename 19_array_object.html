@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>array_object</title>
+        <style>
+            .table1 {
+                border: 1px solid black;
+                width: 200px;
+                border-collapse: collapse;
+                margin-top: 10px;
+            }
+            .table1 th {
+                border: 1px solid black;
+                background-color: green;
+            }
+            .table1 td {
+                border: 1px solid black;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <select name="" id="drinkList1"></select
+        ><br />
+        <select name="" id="drinkList2"></select
+        ><br />
+        <!-- 데이터베이스에서 데이터를 읽어와 표의 형태로 실시간으로 보여주기 -->
+        <button onclick="doSearch1()">조회1</button>
+        <button onclick="doSearch2()">조회2</button>
+
+        <table class="table1">
+            <thead>
+                <th>학번</th>
+                <th>이름</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2201</td>
+                    <td>강태인</td>
+                </tr>
+                <tr>
+                    <td>2202</td>
+                    <td>김세부</td>
+                </tr>
+                <tr>
+                    <td>2203</td>
+                    <td>김하진</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table1">
+            <thead>
+                <th>음료수</th>
+                <th>가격</th>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+        <table class="table1">
+            <thead>
+                <th>이름</th>
+                <th>이메일</th>
+            </thead>
+            <tbody id="user">
+
+            </tbody>
+        <script>
+            //자바스크립트에서 가장 많이 사용하는 내장객채(**********)
+            let brands = ["애플", "구글", "아마존", "마이크로소프트", "메타"];
+
+            //1. toString() : ,를 기준으로 하나의 문자열로 합치기
+            console.log(brands.toString()); //애플,구글,아마존,마이크로소프트,메타
+
+            //2. join(): 파라미타로 전달된 문자를 이용해서 하나의 문자열로 변환
+            console.log(brands.join("")); //애플구글아마존마이크로소프트메타
+            console.log(brands.join("**")); //애플**구글**아마존**마이크로소프트**메타
+
+            //2-1. join()의 실무 활용
+            //1. += : 문자열을 합하다. 장점 : 문자열을 이어붙이니까 굉장히 간단하고 가독성이 쉽다. 단점 : 데이터가 많아질수록 퍼포먼스가 떨어짐
+            const doSearch1 = () => {
+                //1. 데이터 읽어오기
+                const drinkList = [
+                    { name: "오렌지", price: 1000 },
+                    { name: "파위에이드", price: 1200 },
+                    { name: "커피", price: 700 },
+                    { name: "보리음료", price: 1200 },
+                    { name: "코카콜라", price: 1800 },
+                ];
+                //2. 태그 생성
+                let trTags = "";
+                for (drink of drinkList) {
+                    trTags += "<tr>";
+                    trTags += "<td>" + drink.name + "</td>";
+                    trTags += "<td>" + drink.price + "</td>";
+                    trTags += "</tr>";
+                }
+                console.log(trTags);
+                //3. 랜더링 (innerText, innerHTML)
+                document.getElementById("tbody").innerHTML = trTags;
+            };
+            //2. 배열 : push(), join()
+            const doSearch2 = () => {
+                //1. 데이터 읽어오기
+                const drinkList = [
+                    { name: "오렌지", price: 1000 },
+                    { name: "파위에이드", price: 1200 },
+                    { name: "커피", price: 700 },
+                    { name: "보리음료", price: 1200 },
+                    { name: "코카콜라", price: 1800 },
+                ];
+                //2. 태그 생성
+                let arr = [];
+                for (drink of drinkList) {
+                    arr.push("<tr><td>" + drink.name + "</td>");
+                    arr.push("<td>" + drink.price + "</td></tr>");
+                }
+                console.log(arr);
+                let text = arr.join("");
+                //3. 랜더링
+                document.getElementById("tbody").innerHTML = text;
+            };
+            //3. push() : 배열의 마지막에 요소를 추가, join() 과 함께 사용
+            brands = ["애플", "구글", "아마존", "마이크로소프트", "메타"];
+            brands.push("테슬라");
+            console.log(brands);
+
+            //4. pop() : 배열의 마지막 요소를 제거
+            brands.pop();
+            console.log(brands);
+            brands.pop();
+            console.log(brands);
+
+            //5. shift() : 배열의 첫 요소를 제거
+            console.log(brands.shift()); //애플
+            console.log(brands[0]); //구글
+
+            //6. unshift() : 배열의 첫 요소 추가 => 배열의 length를 리턴
+            console.log(brands.unshift("삼성"));
+
+            const drinkListFunc = () => {
+                const types = [
+                    { text: "커피", code: "A" },
+                    { text: "콜라", code: "B" },
+                    { text: "이온음료", code: "C" },
+                ];
+                let tags = [];
+                for (type of types) {
+                    tags.push(
+                        "<option value = " +
+                            type.code +
+                            ">" +
+                            type.text +
+                            "</option>",
+                    );
+                }
+                tags.unshift("<option value = D> 오렌지주스 </option>");
+
+                return tags;
+            };
+            const selDrinkType = drinkListFunc();
+            //console.log(selDrinkType);
+            document.getElementById("drinkList1").innerHTML =
+                selDrinkType.join("");
+
+            // unshift하고자 하는 대상을 매개변수로 받아서 처리하는 함수로 변경
+            const drinkListFunc2 = (ad, code) => {
+                const types = [
+                    { text: "커피", code: "A" },
+                    { text: "콜라", code: "B" },
+                    { text: "이온음료", code: "C" },
+                ];
+                let tags = [];
+                for (type of types) {
+                    tags.push(
+                        "<option value = " +
+                            type.code +
+                            ">" +
+                            type.text +
+                            "</option>",
+                    );
+                }
+                if ((ad, code)) {
+                    tags.unshift(
+                        "<option value = " + code + ">" + ad + "</option>",
+                    );
+                }
+                return tags;
+            };
+
+            const selDrinkType2 = drinkListFunc2("딸기주스", "D");
+            //const selDrinkType2 = drinkListFunc2();
+
+            console.log(selDrinkType2);
+            document.getElementById("drinkList2").innerHTML =
+                selDrinkType2.join("");
+
+            //7. concat() : 두 개 이상의 배열을 하나로 합쳐서 배열로 리턴
+            let arr1 = ["강태인", "김세부", "김하진"];
+            let arr2 = ["박경은", "박순호"];
+            let arr3 = ["신홍명", "안지호", "이여설"];
+            let arr4 = arr1.concat(arr2);
+            console.log(arr4);
+            let arr5 = arr1.concat(arr2, arr3);
+            console.log(arr5);
+
+            //**** spread operator(전개 연산자)
+            let arr6 = [...arr1, ...arr2, ...arr3]; //점은 무조건 3개
+            console.log(arr6);
+
+            //8. slice(start, end) : 배열을 잘라서 배열로 리턴
+            console.log(arr5.slice(1, 4));
+            console.log(arr5); //원래 배열에 변화 없음
+
+            //9. sort() : 배열의 요소를 정렬( 기본 : 문자열 오름차순 )
+            brands = ["애플", "구글", "아마존", "마이크로소프트", "메타"];
+            console.log(brands.sort());
+
+            let points = [100, 98, 99, 97, 99];
+            console.log(points.sort()); //숫자를 문자로 인식하기 때문에 제대로 나오지 않음
+            //따라서 숫자를 sort할 경우 별도의 브라우져 엔진 알고리즘이 필요
+            /* 자바스크립트의 비교함수의 동작 원리 => 엔진이 내부적으로 알고리즘
+      (크롬의 경우 TimSort알고리즘)을 갖고 있으며 함수를 매개변수로 사용한다.
+      반환값에 따라 다음과 같이 동작한다.
+
+      if(a>b) return 1; //양수면 자리를 바꾼다
+      else if(a<b) return -1; //음수이면 자리를 바꾸지 않는다.
+      else 0; //순서를 바꾸지 않는다 => return a - b */
+
+            const ascPoints = points.sort(function (a, b) {
+                // if (a > b)
+                //   return 1; //양수면 자리를 바꾼다
+                // else if (a < b)
+                //   return -1; //음수이면 자리를 바꾸지 않는다.
+                // else 0; //순서를 바꾸지 않는다
+
+                return a - b;
+            });
+
+            console.log(ascPoints);
+            const descPoints = points.sort(function (a, b) {
+                return b - a;
+            });
+            console.log(descPoints);
+
+            //9. sort과제
+            let drinkList = [
+                { name: "오렌지", price: 1000 },
+                { name: "파워에이드", price: 1200 },
+                { name: "커피", price: 700 },
+                { name: "보리음료", price: 1200 },
+                { name: "코카콜라", price: 1800 },
+            ];
+
+            // 9-1. 이름으로 오름차순 정렬
+            // drinkList.sort(function (a, b) {
+            //   if (a.name > b.name) return 1;
+            //   else if (a.name < b.name) return -1;
+            //   else return 0;
+            //   return a[name] - b[name]; => 이것만 남겨두면 안 뜸 vscode의 오류
+            // });
+            //console.log(drinkList);
+
+            //9-2. 가격 내림차순으로 정렬
+            // drinkList.sort(function (a, b) {
+            //   return b.price - a.price;
+            // });
+
+            // console.log(drinkList);
+
+            //9-3. 정렬기준을 입력 => 정렬
+            let standard = prompt("정렬기준을 입력하세요 name,price 중");
+            drinkList.sort(function (a, b) {
+                if (a[standard] > b[standard]) return 1;
+                else if (a[standard] < b[standard]) return -1;
+                else return 0;
+            });
+            console.log(drinkList);
+
+            /*10. splice(p1,p2,p3) : 배열의 특정 위치에 요소를 추가하거나, 제거가 가능, 배열에 변화가 생긴다
+      p1 : 추가할 자리의 인덱스
+      p2 : 제거할 갯수
+      p3 : 추가할 요소 */
+
+            brands = ["애플", "구글", "아마존", "마이크로소프트", "메타"];
+            brands.splice(1, 0, "삼성", "쿠팡");
+            console.log(brands);
+
+            brands.splice(1, 2);
+            console.log(brands);
+
+            brands.splice(brands.indexOf("구글"), 0, "삼성, 쿠팡");
+            console.log(brands);
+
+            /*11. filter() **********************
+      - 배열의 특정 조건에 맞는 요소만 리턴
+      - 새로운 배열의 형태로 리턴
+        형식
+        const resultArray = 원array.filter(()=>{
+
+        return ....
+      })
+      - 원 배열은 그대로 유지한다.*/
+            drinkList = [
+                { name: "오렌지", price: 1000 },
+                { name: "파워에이드", price: 1200 },
+                { name: "커피", price: 700 },
+                { name: "보리음료", price: 1200 },
+                { name: "코카콜라", price: 1800 },
+            ];
+
+            //11-1. for : 1000 원으로 구입가능한 음료를 구하라
+            let canBuy = [];
+            for (let menu of drinkList) {
+                if (menu.price <= 1000) {
+                    canBuy.push(menu);
+                }
+            }
+            console.log(canBuy);
+
+            //11-2. filter
+            let available = drinkList.filter((drink) => {
+                return drink.price <= 1000;
+            });
+            console.log(available);
+
+            //11-3. ****** filter 실무예제 *********
+            //사용자가 카테고리를 선택하고, 특정 가격 이하의 상품만 보내겠다고 체크했을 때
+            //프론트엔드에서 데이터를 거르고자 하는 경우
+            let products = [
+                {
+                    id: 1,
+                    name: "맥북 프로",
+                    category: "electronics",
+                    price: 2500000,
+                },
+                {
+                    id: 2,
+                    name: "아이패드 에어",
+                    category: "electronics",
+                    price: 900000,
+                },
+                {
+                    id: 1,
+                    name: "기계식 키보드",
+                    category: "accessories",
+                    price: 150000,
+                },
+                {
+                    id: 1,
+                    name: "허브 매트",
+                    category: "accessories",
+                    price: 30000,
+                },
+            ];
+
+            //11-3-1 . 카테고리가 악세서리 인것을 골라라
+            let cateisacc = products.filter((product) => {
+                return product.category === "accessories";
+            });
+            console.log(cateisacc);
+            //11-3-2. 가격이 10만원 이하인 것을 골라라
+            let price10down = products.filter((product) => {
+                return product.price <= 100000;
+            });
+            console.log(price10down);
+            //11-3-3. 카테고리가 악세서리 이고 가격이 10만원 이하인것을 골라라
+            let acc10 = products.filter((product) => {
+                return (
+                    product.price <= 100000 &&
+                    product.category === "accessories"
+                );
+            });
+            console.log(acc10);
+
+            //11-3-4. 파이썬 set이 자바스크립트에서도 사용되는지 확인하기
+
+            //12. map() : 배열의 모든 요소에 대해서 실행하고 새로운 배열의 형태로 리턴, 원배열은 그대로 ...
+            //과제 => map() 을 이요해 firstName과 lastName을 합쳐 fullName, email을 갖는 새로운 객체
+            // newUserList를 생성하시오.
+            let userList = [
+                { firstName: "재석", lastName: "유", email: "you@gmail.com" },
+                { firstName: "종국", lastName: "김", email: "kim@gmail.com" },
+                { firstName: "지효", lastName: "송", email: "song@gmail.com" },
+            ];
+
+            let newUserList1 = userList.map(function (user) {
+                return {
+                    fullName: `${user.lastName}${user.firstName}`,
+                    email: user.email,
+                };
+            });
+            console.log(newUserList1);
+
+            //실무활용 : push(), join() 대체
+            //newUserList를 표 (table id="user")로 표현
+            let arr = [];
+            let newUserList = newUserList1.map(function(user){
+                arr.map("<tr><td>" +user.lastName+user.firstName+ "</td>"),
+                arr.map("<td>" +  user.email + "</td></tr>")
+            })
+            console.log(arr);
+            let text = arr.join("");
+            document.getElementById("user").innerHTML = text;
+            let newUser
+            // 참고사이트 : 모던자바스크립트
+        </script>
+    </body>
+</html>

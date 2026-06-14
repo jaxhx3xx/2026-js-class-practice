@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for each</title>
+  </head>
+  <body>
+    <script>
+      let brands = ["애플", "구글", "삼성", "마이크로소프트", "테슬라"];
+      //brands.forEach(function(){}); //forEach는 매개변수로 함수가 온다.
+      brands.forEach(function (item, index) {
+        console.log(index, item);
+      });
+      //forEach의 활용 1.
+      myScore = [98, 67, 89, 100, 56];
+      let total = 0;
+      myScore.forEach(function (score) {
+        total += score;
+      });
+      console.log("총점 : ", total);
+
+      //forEach 의 활용 2.
+      myHobby = ["독서", "영화감상", "유튜브시청", "코딩"];
+      myHobby.forEach(function (hobby) {
+        console.log("제 취미는 ", hobby, "입니다");
+      });
+    </script>
+  </body>
+</html>

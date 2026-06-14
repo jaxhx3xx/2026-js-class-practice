@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      let person = {
+        name: "홍길동",
+        number: 2701,
+        phone: "010-1111-2222",
+        address: "서울시 관악구 ",
+      };
+      function check(inputValue) {
+        if (inputValue === "") {
+          console.log("키를 입력해야 동작합니다.");
+        } else if (person[inputValue] === undefined) {
+          console.log("존재하지 않는 키입니다.");
+        } else console.log(person[inputValue]);
+      }
+
+      let inputValue = prompt("키를 입력하세요");
+      check(inputValue);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function</title>
+  </head>
+  <body>
+    <!--common.js-->
+    <script src="./js/common.js"></script>
+    <script>
+      /*1. 함수 선언식 방식
+        function 함수이름(매개변수1,.....){
+        코드블럭
+        }
+        - 선언 전 호출 가능
+        - return 문*/
+      console.log(sum(7, 9));
+
+      function sum(n1, n2) {
+        return n1 + n2;
+      }
+      console.log(sum(5, 6));
+
+      console.log(taxAmount(10000));
+
+      console.log(getTop5());
+
+      // common.js
+
+      /* 2. 함수 표현식
+      - 함수를 변수에 할당해서 사용
+      - 변수명이 함수명이 된다.
+      - 선언전에 사용 불가능
+      - 가독성에 문제 발생가능
+      */
+      // console.log(sum2(10, 10)); 오류발생 선언 전 호출 불가능
+      const sum2 = function (n1, n2) {
+        return n1 + n2;
+      };
+      console.log(sum2(10, 5));
+
+      /*화살표 함수
+      - 실무에서 가장 많이 사용
+      - 기본 개발자들은 잘 모르는 경우 있음
+      - function이라는 예약어 사용 안 함 
+      - const 함수명 = (매개변수...)=> {코드블록}
+      - 코드 블록이 한 줄이고 return 이 있는 경우 {} 생략 가능
+      */
+      // function sum(n1, n2) {
+      //         return n1 + n2;
+      //       }
+
+      const sum3 = (n1, n2) => {
+        return n1 + n2;
+      };
+      console.log(sum3(100, 100));
+
+      const sum4 = (n1, n2) => n1 + n2;
+      console.log(sum4(1000, 1000));
+
+      //taxAmount1, getTop5_1() 함수를 화살표 함수로 바꿔라.
+
+      const taxAmount1 = (productPrice) => {
+        const tax = 0.1;
+        return productPrice * tax;
+      };
+      console.log(taxAmount1(10000));
+      const getTop5_1 = () => {
+        return ["정재희", 2, 3, 4, 5];
+      };
+      console.log(getTop5_1());
+
+      /* 4. 생성자 사용
+        - Function() 안에 매개변수..., 코드 부분 문자열로 순서대로 기입
+       */
+      const add = new Function("n1", "n2", "return n1+n2");
+      console.log(add(7, 8));
+
+      //함수 작성 => 두 수와 연산자를 입력 받아 연산자 종류에 맞게 연산하는 함수
+      const calculation = (n1, cal, n2) => {
+        switch (cal) {
+          case "+":
+            return n1 + n2;
+            break;
+          case "-":
+            return n1 - n2;
+            break;
+          case "*":
+            return n1 * n2;
+            break;
+          case "/":
+            return n1 / n2;
+            break;
+          case "%":
+            return n1 % n2;
+            break;
+          default:
+            console.log("연산자가 아닙니다");
+        }
+      };
+      //   let n1 = prompt("숫자 하나 입력하세요");
+      //   let n2 = prompt("숫자 하나 입력하세요");
+      //   let cal = prompt("연산자 하나 입력하세요");
+      console.log(calculation(10, "*", 20));
+
+      let cal = "%";
+      const calculation2 = new Function("n1", "n2", "return n1" + cal + "n2");
+      console.log(calculation2(10, 3));
+    </script>
+  </body>
+</html>

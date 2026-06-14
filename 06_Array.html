@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>데이터 타입 : Array</title>
+  </head>
+  <body>
+    <script>
+      /*배열
+        - 하나 이상의 데이터를 담을 수 있다.
+        - 어떤 데이터 타입도 올 수 있다. 
+        - 어떤 데이터 타입도 함께 올 수 있다. 
+        - 인덱스가 있어서 순서가 있다. = > 0 
+        - 
+        */
+
+      let nums = [1, 3, 5, 6, 7, 89]; //숫자
+      let str = ["a", "b", "c"]; //문자열
+      let mix = [45, "sss", true, [1, 2, 3], { name: "정재희" }];
+      console.log(nums);
+      console.log(str);
+      console.log(mix);
+
+      console.log(nums.length);
+      console.log(str.length);
+      console.log(mix.length);
+
+      console.log(mix[3]);
+      console.log(mix[4]);
+
+      //1. property : length
+      //2. 내장함수 : .........push() => 가장 마지막에 새로운 데이터를 추가
+
+      nums.push(100); //새로운 데이터가 맨 뒤에 추가 //prarameter
+      console.log(nums);
+
+      nums.pop(100); //맨 뒤 데이터 하나 삭제
+      console.log(nums);
+
+      //3. 수정
+      nums[5] = 98;
+      console.log(nums);
+
+      //4. 생각한대로 돌아간다
+      let x = [];
+      console.log(x.length);
+      x[0] = 1;
+      console.log(x);
+      x[2] = 3;
+      console.log(x);
+      x.push(7);
+      console.log(x);
+      x.push(3);
+      console.log(x);
+
+      //5. 배열의 활용
+      //객체와 함께 활용, 예를 들어 개발한 시스템에서 (일부) 사용자 목록을 읽어와 처리를 할 경우
+      //let userList={[],[],[]}
+
+      let userList = [
+        {
+          name: "정국",
+          gender: "남자",
+          email: "jung@gamil.com",
+          phone: "000-1111-1111",
+        },
+        {
+          name: "뷔",
+          gender: "남자",
+          email: "Vui@gamil.com",
+          phone: "000-2222-1111",
+        },
+        {
+          name: "로제",
+          gender: "여자",
+          email: "Rose@gamil.com",
+          phone: "000-3333-1111",
+        },
+      ];
+      console.log(userList[2]);
+      console.log(userList[0].phone);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1. slice() 실무 활용 예제
+      //1-1. 긴 문자열 ...로 나타내기
+      const longString =
+        "대학로에서 매춘하다가 토막 살해당한 여고생 아직 대학로에 있다";
+      const truncateTitle = (title, maxLength) => {
+        if (title.length > maxLength) {
+          return title.slice(0, maxLength) + "....";
+        } else {
+          return title;
+        }
+      };
+      console.log(truncateTitle(longString, 10));
+      //1-2. 전화번호 뒤 4자리 '****'마스킹
+      let phoneNumber = "010-123-5678";
+      let hiddenNumber = phoneNumber.slice(0, -4) + "****";
+      console.log(hiddenNumber);
+
+      //2. replace() 실무 활용 예제 => Jeju를 다 바꾸고 싶어!!!(정규식)
+      //2-1. db에 저장 => '-' 없이, 프론트에서 제거해서 전달
+      /* 정규식 (regular expression)
+      - /  / 사이에 작성
+      -D : 숫자
+      - \ : not
+      - option : g=> 모두 */
+
+      phoneNumber = "010-1234-5678";
+      let clearNumber = phoneNumber.replaceAll(/\D/g, "");
+      console.log(clearNumber);
+      for (let i of phoneNumber) {
+        if (phoneNumber === "-") {
+          clearNumber = phoneNumber.replace("-", "");
+        }
+      }
+      console.log(clearNumber);
+
+      let str = "Welcome Jeju!! Jeju!!";
+      console.log(str.replace(/Jeju/g, "Seoul"));
+      //3. padStart() 실무 활용 예제
+      /*카드번호(16) 읽어와서 앞자리를 마스킹하고 싶은 경우 */
+      const cardNumber = "5432";
+      const maskCardNumber = cardNumber.padStart(16, "*");
+      console.log(maskCardNumber);
+      //4. charAt()  실무 활용 예제
+      //주민등록번호 6, charAt(7)번째 자리를 보고 성별 판별하기
+      //091215-3057842
+      // 남자 : 1,3,5,7 (1,3은 내국인 5,7은 외국인 남성 ) 여자 : 2,4,6,8
+      const checkGender = (sn) => {
+        if (sn.charAt(7) === "1" || sn.charAt(7) === "3") {
+          return "내국인남성";
+        } else if (sn.charAt(7) === "5" || sn.charAt(7) === "7")
+          return "외국인남성";
+        else if (sn.charAt(7) === "2" || sn.charAt(7) === "4")
+          return "내국인여성";
+        else if (sn.charAt(7) === "6" || sn.charAt(7) === "8")
+          return "외국인여성";
+      };
+      console.log(checkGender("091215-3057842")); //내국인남성
+      console.log(checkGender("091215-2057842")); //내국인여성
+
+      //5. ******split() 실무 활용 예제(2차수행평가 나옴!!!!!!!!!!!!!!!!)
+      //5-1. 쇼핑몰 사이트 등에서 카테고리나 아이템 이름 등 특정한 데이터를 뽑아낼 경우
+      const url = "https://myshop.com/products/electronics/iphone15";
+      url.split("/");
+      const pageSegment = url.split("/");
+      console.log(pageSegment);
+      let categoryName = pageSegment[pageSegment.length - 2];
+      let itemName = pageSegment[pageSegment.length - 1];
+      console.log(`카테고리 : ${categoryName}`);
+      console.log(`품명 ${itemName}`);
+
+      //5-2. 로그 파일 ****** 나올 확률높음*****
+      const csvData =
+        "2026-04-29,Login_Success,user_01\n2024-04-29,Login_Fail,user_02";
+      const logData = csvData.split("\n");
+      console.log(logData);
+      //허가받지 않은 사람(Login_Fail)을 찾아내기
+      for (line of logData) {
+        [date, status, userId] = line.split(","); // 이 모양을 배열 구조 분할 할당
+        if (status === "Login_Fail") {
+          console.log(
+            `허가받지 않은 사용자 ${userId} 가 ${date}에 로그인 시도했습니다.`,
+          );
+        } else
+          console.log(
+            `허가받은 사용자 ${userId} 가 ${date}에 로그인 시도했습니다.`,
+          );
+      }
+      //6. endsWith() 실무 활용 예제
+      //특정 파일의 형식을 찾거나 업로드 등에 제한을 하는 경우
+      //jpg, png파일만 업로드를 허용한다고 가정하자
+      const checkFile = (fileName) => {
+        let changeFilename = fileName.toUpperCase();
+        if (changeFilename.endsWith("JPG") || changeFilename.endsWith("PNG"))
+          return "업로드 가능";
+        // else if (fileName.endsWith("PNG")) return "업로드 가능";
+        else return "업로드 불가능";
+      };
+      console.log(checkFile("abc.JPG")); //업로드 가능
+      console.log(checkFile("def.gif")); //업로드 불가능
+      console.log(checkFile("ggg.PNG"));
+      console.log(checkFile("ggg.png"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number_object</title>
+  </head>
+  <body>
+    <label for="n1"> 숫자1</label>
+    <input type="number" id="n1" /> <br />
+    <!-- <input type="color" name="" id="n1"><br/> -->
+
+    <label for="n2">숫자2</label>
+    <input type="text" id="n2" />
+    <button onclick="doSum()">합</button> <!-- 인라인 이벤트(on~)-->
+
+    <p>결과 : <span id="result">   </span></p>
+      <script>
+        const doSum=() =>{
+          //1. 변수1 읽어오기
+          let number1=document.getElementById("n1").value;
+          
+          //2. 변수2 읽어오기 => 숫자로 변환
+          let number2 = parseInt(document.getElementById("n2").value);
+          //3. 더하기
+          let sum = +number1+number2;
+          //4. 화면에 뿌려(랜더링)
+          document.getElementById("result").innerHTML=sum;
+        };
+
+        //Number 객체 내장함수
+        let num = 333;
+        console.log(num);
+        //1. 문자열로 변환 함수
+        let strNum = num.toString();
+        console.log(strNum);
+
+        //2. 문자열을 숫자로 변환하는 함수
+        //parseInt(), parseFloat() => 전역함수 : 속한 주인(?) 객체 window(전역객체)
+        console.log(parseInt(strNum));
+        console.log(parseInt(12.33));
+        console.log(parseInt(12.77)); // 반올림 안함 그냥 버림
+        console.log(parseInt("10 20 30 40")); //10 뒤에거 다 버림
+        console.log(parseInt("2학년 3반")); //2 출력
+        console.log(parseInt("echo")); //NaN
+
+        let f = "10.4567";
+        console.log(f);
+        console.log(parseFloat(f)); //파란색으로 출력 즉 숫자
+
+        //3. toFixed() : 소수점 몇자리까지 보여줄까
+        f = 10.4567;
+        console.log(f.toFixed(0)); //10
+        console.log(f.toFixed(1)); // 2자리에서 반올림 하겠다.
+        console.log(f.toFixed(2)); // 3자리에서 반올림 10.46
+        console.log(f.toFixed(3)); //10.457
+
+        //4. toExponential() : 지수표기법으로 표현 => 거의 사용 안함
+        console.log(f.toExponential(2));
+
+        //5. toPrecision() : 정수보와 소수부 합쳐서 => 거의 사용 안함
+        console.log(f.toPrecision(5));
+      </script>
+    </p>
+  </body>
+</html>

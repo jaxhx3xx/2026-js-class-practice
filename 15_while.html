@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while</title>
+  </head>
+  <body>
+    <script>
+      //while : 조건이 참인 동안 반복, 무한루프에 빠지지 않도록 조심
+      let i = 1;
+      while (i <= 10) {
+        console.log(i);
+        i++;
+      }
+      //동전교환하는 코드
+      let inputCoin = 7000;
+      let coinUnit = 500;
+      let count = 0;
+      while (inputCoin >= coinUnit) {
+        inputCoin -= coinUnit;
+        count++;
+      }
+      console.log("동전 : ", count);
+      console.log("남는 돈은 : ", inputCoin, "원");
+
+      //do ~ while : 무조건 한 번은 실행
+      i = 10;
+      do {
+        console.log(i);
+        i++;
+      } while (i < 10);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트의 변수</title>
+  </head>
+  <body>
+    <script>
+      /*변수 선언의 종류
+        1. var
+            -ES6이전부터 사용
+            -재선언, 재할당이 가능 => 덮어쓰기가 가능하다 => 팀작업시 유의 
+            -전역변수 => 추천X 
+        */
+
+      var studentName = "2학년 2반 정재희";
+      console.log(studentName);
+      //studentNumber = 2213;
+      studentName = "나미림"; // 재할당 가능
+      console.log(studentName);
+      var studentName = "2-2 죵재희"; //재선언 가능
+      console.log(studentName);
+      var meister_code = "aab345"; //위험한 요소 재할당, 재선언이 가능하기 때문에 권장하지 않는다.
+
+      var x = 6;
+      var y = 8;
+      var z = x + y;
+      console.log("z : ", z);
+
+      var x = 9;
+      y = 14;
+      z = x - y;
+      console.log("z : ", z);
+
+      /*
+      2.let 
+        - ES6이후부터 사용
+        - 재선언 불가
+        - 재할당 가능
+        - 권장 
+      */
+      // let x = 9; 재선언 불가 (예외 Exception 발생)
+      let x1 = 9;
+      // let x1 syntax 오류
+
+      x1 = 11; //재할당은 가능하다
+      let y1 = 30;
+      let z1 = x1 + y1;
+      console.log("z1 : ", z1);
+      z1 = x1 - y1;
+      console.log("z1 : ", z1);
+
+      /*
+      3. const
+      - ES6 이후 등장
+      - 변하지 않는 상수값에 사용
+      - 재선언, 재할당 불가
+      - 대문자로 작성한다. 
+      - 현업 바뀌면 안되는 수 
+      */
+      const PI = 3.14;
+      //const PI =3; // 재선언 불가
+      //PI = 3; //재할당 불가
+      const KoreaDateFormat = "YYYY.MM.DD";
+      const UsaDateFormat = "DD.MM.YYYY";
+    </script>
+  </body>
+</html>

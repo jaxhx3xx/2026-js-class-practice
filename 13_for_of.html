@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for of</title>
+  </head>
+  <body>
+    <script>
+      /* for ~ of : 
+        - 일반 배열에서 많이 사용 (순회)
+        - 문자열 분해해서 사용 
+        */
+      //1. 일반 배열
+      let brands = ["애플", "구글", "삼성", "마이크로소프트", "테슬라"];
+      for (const brand of brands) {
+        console.log(brand);
+      }
+      //2. 문자열을 분해
+      const lang = "javascript";
+      for (const char of lang) {
+        console.log(char);
+      }
+
+      //3. 다음 숫자를 한 글자식 분해해본다.
+      let num = 1297857283590;
+      for (const char of num.toString()) {
+        console.log(char);
+      }
+    </script>
+  </body>
+</html>

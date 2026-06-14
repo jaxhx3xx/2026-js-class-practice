@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>데이터타입</title>
+  </head>
+  <body>
+    <script>
+      //1. 문자열(String 객체)
+      let name1 = "John";
+      let name2 = "Bacon";
+      let str1 = "그는 '존 베이컨'입니다.";
+      console.log(str1);
+      let str2 = '그는 "존 베이컨"입니다.';
+      console.log(str2);
+      //let str3 = "그는 \"존 베이컨\"입니다.";(이스케이프 문자)
+      //console.log(str3);
+
+      //문자열 연산 : + (합치기 = concate)
+      let firstName = "John";
+      let lastName = " Bacon";
+      let FullName = firstName + lastName;
+      console.log(FullName);
+
+      /*
+      2. 숫자형 (Number 객체)
+      - 정수, 실수 동일 취급 
+      - 내장 함수, 속성 다양함. 
+      - 자바와 달리 64비트 부동 소수점을 사용 => 정밀도 오차 발생
+      - 1비트는 부호 11비트는 지수부 52비트는 소수부 그냥 엄청 큰 수도 포함이 가능하다
+      */
+
+      // 속성
+      console.log(Number.MAX_SAFE_INTEGER);
+      console.log(Number.MAX_VALUE); //e+는 10의 308승
+
+      let n1 = 3; //정수
+      let n2 = 3.75; //실수
+
+      let result = 0.1 + 0.2;
+      if (result === 0.3) {
+        console.log("정답");
+      } else {
+        console.log("오답");
+      } //이게 바로 부동소수점 정밀도의 오차라는 대표적인 예이다. 정답이 나와야하지만 오답이 나오는 이 출력값
+      console.log(result);
+
+      /*정밀도 오차 해결방법
+      1. 정수로 변환 후 계산 : (0.1 * 10 + 0.2 * 10)/10
+      2. Number 객체의 함수 toFixed()사용: (0.1+0.2).toFixed(1);
+      3. 현업 " BigInt " 
+      */
+      console.log((0.1 * 10 + 0.2 * 10) / 10);
+      console.log((0.1 + 0.2).toFixed(1)); //String 타입이다.
+
+      /*3. Boolean (참/거짓)*/
+      let userInputAge = 17;
+      let adultAge = 19;
+      let isAdult = userInputAge >= adultAge;
+      console.log(isAdult);
+
+      /* 4. undefined (중요)
+      - 데이터 타입이자, 데이터 값이다. 
+      - 개발자 실수로 발생
+      - 정의만 하고 할당을 안 한 경우 발생 
+      - 실행되는 시점 => 브라우저 엔진이 자동으로 undefined 할당
+      => 실행은 가능
+      */
+
+      let a;
+      console.log(a);
+
+      /* 5. null (중요)
+      - 없음을 의미
+      - 개발자가 의도적으로 할당 (vs 개발자 실수)
+      - 변수를 선언하는 시점에는 아직 어떤 값 또는 데이터 타입을 
+      할당할 지 모르는 경우 일단 null값을 할당
+      - 현업 : 메모리(주제모리) 사용 효율을 높이기 위해 더이상 사용하지 않는
+      메모리 해제용으로 사용 => Garbage collection 
+      */
+
+      let y = "굉장히 큰 json 데이터";
+      y = null; //메모리 해제(Garbage collection)가 이루어짐
+
+      /*자바스크립트가 항상 false라고 생각하는 데이터 : 
+       false, 0, null, undefined, "", NaN(Not a Number)*/
+
+      let userInput = prompt("이름을 입력하세요!!");
+      if (userInput) {
+        //공백만 아니면 true로 보고 실행한다. 왜? ""ㅇ렇게 빈값을 false라고 보니까
+        console.log("환영합니다. ");
+      }
+    </script>
+  </body>
+</html>

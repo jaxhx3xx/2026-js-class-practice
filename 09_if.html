@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let age = prompt("나이를 입력하세요");
+      let price = 0;
+      if (age < 6 || age >= 70) {
+        price = 0;
+      } else if (age < 12) {
+        price = 450;
+      } else if (age < 18) {
+        price = 700;
+      } else if (age >= 18) {
+        price = 1000;
+      }
+      console.log(price);
+
+      //시험 문제 무조건 나옴 무조건무조건 무조건
+      //false : false, undefined, null, 0 ,"",NaN
+      //위의 것 제외한 모든 것이 true
+      //let x; //undefined이므로 거짓이므로 else구문 실행
+      let x = null;
+      if (!x) {
+        //(!x)이면 if문 실행
+        console.log("if구문 실행");
+      } else {
+        console.log("else 구문 실행");
+      }
+    </script>
+  </body>
+</html>

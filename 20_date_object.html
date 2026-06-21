@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>date 객체 내장 함수</title>
+    </head>
+    <body>
+        <!-- 오늘을 기준으로 7일전 오늘까지 표현  -->
+        <input type="date" name="" id="startDate" /> -
+        <input type="date" name="" id="endDate" />
+        <script>
+            //1. 오늘 날짜 정보 가져오기
+            let now = new Date();
+            console.log(now); //Tue Jun 16 2026 11:02:35 GMT+0900 (한국 표준시)
+
+            //2. 년, 월(0), 일, 시간, 분, 초로 생성 가능
+            let d = new Date(2025, 10, 1, 18, 34, 22);
+            console.log(d);
+
+            //3. get() : 날짜에 대한 각종 정보값을 얻어오는 함수
+            let year = now.getFullYear();
+            let month = now.getMonth(); //월(0~)
+            let dayName = now.getDay(); //요일(0~)
+            let day = now.getDate();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+            console.log(year, month + 1, dayName, day, hour, minute, second);
+
+            //4. set() : get에 상응해서 모두 존재하나 거의 사용하지는 않는다.
+
+            //5. 오늘 날짜를 구해서 YYYY-MM-DD
+            const today =
+                year +
+                "-" +
+                (month + 1).toString().padStart(2, 0) +
+                "-" +
+                day.toString().padStart(2, 0);
+            console.log(today);
+            document.getElementById("endDate").value = today;
+
+            //6. 오늘을 기준으로 7일 전을 YYYY-MM_DD포매으로 id="startDate에 출력"
+            const sevenDaysAgo =
+                year +
+                "-" +
+                (month + 1).toString().padStart(2, 0) +
+                "-" +
+                (day - 7).toString().padStart(2, 0);
+            console.log(sevenDaysAgo);
+            document.getElementById("startDate").value = sevenDaysAgo;
+        </script>
+    </body> 
+</html>

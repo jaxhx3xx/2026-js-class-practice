@@ -1,155 +1,159 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      let str = "Welcome Seoul";
-      //1. property(속성) : length
-      console.log(str.length);
-      //2. indexOf(대상, 찾을 시작 위치) : 찾고자 하는 문자열의 시작 인덱스, 여러개라면 처음 문자열
-      //모두 찾을 수는 없을까? ...=> 숙제
-      console.log(str.indexOf("Seoul"));
-      str = "Welcome Seoul Seoul Seoul";
-      console.log(str.indexOf("Seoul")); //8 출력 뒤에 나온 것은 못 찾음
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let str = "Welcome Seoul";
+            //1. property(속성) : length
+            console.log(str.length);
+            //2. indexOf(대상, 찾을 시작 위치) : 찾고자 하는 문자열의 시작 인덱스, 여러개라면 처음 문자열
+            //모두 찾을 수는 없을까? ...=> 숙제
+            console.log(str.indexOf("Seoul"));
+            str = "Welcome Seoul Seoul Seoul";
+            console.log(str.indexOf("Seoul")); //8 출력 뒤에 나온 것은 못 찾음
 
-      //두번째 서울이 나오는 것
-      console.log(str.indexOf("Seoul", 9)); //14
-      console.log(str.indexOf("Jeju")); //-1(없어서)
-      //세번째 서울이 나오는 것
-      console.log(str.indexOf("Seoul", 15)); //20
+            //두번째 서울이 나오는 것
+            console.log(str.indexOf("Seoul", 9)); //14
+            console.log(str.indexOf("Jeju")); //-1(없어서)
+            //세번째 서울이 나오는 것
+            console.log(str.indexOf("Seoul", 15)); //20
 
-      //활용
-      let total = "010-0000-1111";
-      if (total.indexOf("-")) {
-        console.log("Error 입력형식오류");
-      }
+            //활용
+            let total = "010-0000-1111";
+            if (total.indexOf("-")) {
+                console.log("Error 입력형식오류");
+            }
 
-      let index = str.indexOf("Seoul");
-      while (index !== -1) {
-        console.log(index);
-        index = str.indexOf("Seoul", index + 1);
-      }
+            let index = str.indexOf("Seoul");
+            while (index !== -1) {
+                console.log(index);
+                index = str.indexOf("Seoul", index + 1);
+            }
 
-      //3. lastIndexOf : 뒤에서부터 문자열을 찾아서 리턴
-      str = "Welcome Seoul";
-      console.log(str.lastIndexOf("Seoul"));
-      str = "Welcome Seoul Seoul";
-      console.log(str.lastIndexOf("Seoul"));
+            //3. lastIndexOf : 뒤에서부터 문자열을 찾아서 리턴
+            str = "Welcome Seoul";
+            console.log(str.lastIndexOf("Seoul"));
+            str = "Welcome Seoul Seoul";
+            console.log(str.lastIndexOf("Seoul"));
 
-      //4. ***slice() : 문자열을 (시작위치, 마지막 위치-1)까지 잘라내기
-      //음수 처리 완벽
-      str = "Welcome Seoul";
-      console.log("======slice() 함수 사용 ========");
-      console.log(str.slice(8, 13));
-      console.log(str.slice(8));
-      console.log(str.slice(8, 2)); // 빈칸 출력
-      // 서울의 인덱스를 모를 경우??
-      console.log(str.slice(str.indexOf("Seoul")));
-      console.log(str.slice(-8)); //뒤로부터 -1 ~ -8 me Seoul
-      console.log(str.slice(-5, -1)); //Seou
-      console.log(str.slice(-13)); //Welcome Seoul
+            //4. ***slice() : 문자열을 (시작위치, 마지막 위치-1)까지 잘라내기
+            //음수 처리 완벽
+            str = "Welcome Seoul";
+            console.log("======slice() 함수 사용 ========");
+            console.log(str.slice(8, 13));
+            console.log(str.slice(8));
+            console.log(str.slice(8, 2)); // 빈칸 출력
+            // 서울의 인덱스를 모를 경우??
+            console.log(str.slice(str.indexOf("Seoul")));
+            console.log(str.slice(-8)); //뒤로부터 -1 ~ -8 me Seoul
+            console.log(str.slice(-5, -1)); //Seou
+            console.log(str.slice(-13)); //Welcome Seoul
 
-      //5. substring() : 문자열을 (시작위치, 마지막 위치-1)까지 잘라내기
-      //음수가 나오면 0으로 처리
-      str = "Welcome Seoul";
-      console.log("======substring() 함수 사용 ========");
-      console.log(str.substring(8, 13)); //Seoul
-      console.log(str.substring(8)); //Seoul
-      console.log(str.substring(8, 2)); // lcome => 오동작
-      console.log(str.substring(-8)); //Welcome Seoul
-      console.log(str.substring(-5, -1)); // 빈칸 출력
-      console.log(str.substring(-13)); //Welcome Seoul
+            //5. substring() : 문자열을 (시작위치, 마지막 위치-1)까지 잘라내기
+            //음수가 나오면 0으로 처리
+            str = "Welcome Seoul";
+            console.log("======substring() 함수 사용 ========");
+            console.log(str.substring(8, 13)); //Seoul
+            console.log(str.substring(8)); //Seoul
+            console.log(str.substring(8, 2)); // lcome => 오동작
+            console.log(str.substring(-8)); //Welcome Seoul
+            console.log(str.substring(-5, -1)); // 빈칸 출력
+            console.log(str.substring(-13)); //Welcome Seoul
 
-      //6. substr() : 문자열을 (시작위치, 길이)까지 잘라내기ㅣ
-      console.log("======substr() 함수 사용 ========");
-      let now = "20260421";
-      let year = now.substr(0, 4);
-      console.log(year + "년");
-      let month = now.substr(4, 2);
-      console.log(month + "달");
-      let date = now.substr(6, 2);
-      console.log(date + "일");
+            //6. substr() : 문자열을 (시작위치, 길이)까지 잘라내기ㅣ
+            console.log("======substr() 함수 사용 ========");
+            let now = "20260421";
+            let year = now.substr(0, 4);
+            console.log(year + "년");
+            let month = now.substr(4, 2);
+            console.log(month + "달");
+            let date = now.substr(6, 2);
+            console.log(date + "일");
 
-      //7. **replace(str1, str2)  : str1을 str2로 교체하는 내장 함수
-      console.log("======repace() 함수 사용 ========");
-      str = "Welcome Jeju! Jeju";
-      console.log(str.replace("Jeju", "Seoul"));
-      console.log(str.replace("Jeju", "Seoul"));
+            //7. **replace(str1, str2)  : str1을 str2로 교체하는 내장 함수
+            console.log("======repace() 함수 사용 ========");
+            str = "Welcome Jeju! Jeju";
+            console.log(str.replace("Jeju", "Seoul"));
+            console.log(str.replace("Jeju", "Seoul"));
 
-      //8. **toUpperCase() : 대문자로 변환
-      console.log("======toUpperCase() 함수 사용 ========");
-      console.log(str.toUpperCase());
+            //8. **toUpperCase() : 대문자로 변환
+            console.log("======toUpperCase() 함수 사용 ========");
+            console.log(str.toUpperCase());
 
-      //9. **toLowerCase() : 소문자로 변환
-      console.log("======toLowerCase()  함수 사용 ========");
-      console.log(str.toLowerCase());
+            //9. **toLowerCase() : 소문자로 변환
+            console.log("======toLowerCase()  함수 사용 ========");
+            console.log(str.toLowerCase());
 
-      //활용 : 사용자는 다양하게 입력하게 되므로 ... 입력된 내용을 대(소)문자로 변환하면 된다.
+            //활용 : 사용자는 다양하게 입력하게 되므로 ... 입력된 내용을 대(소)문자로 변환하면 된다.
 
-      //10. concat() : 여러 문자열 합치기, 객수 제한 없다.
-      let firstName = "John";
-      let lastName = "Bacon";
-      let fullName = firstName.concat(" ", lastName);
-      console.log(fullName);
+            //10. concat() : 여러 문자열 합치기, 객수 제한 없다.
+            let firstName = "John";
+            let lastName = "Bacon";
+            let fullName = firstName.concat(" ", lastName);
+            console.log(fullName);
 
-      //11. trim() : 문자열의 앞 뒤 공백 제거
-      console.log("======trim() 함수 사용 ========");
-      let name = "         2년 2반          ";
-      console.log(name.trim());
+            //11. trim() : 문자열의 앞 뒤 공백 제거
+            console.log("======trim() 함수 사용 ========");
+            let name = "         2년 2반          ";
+            console.log(name.trim());
 
-      //12. ***** padStart(문자열 전체 길이, 앞에 채울 문자열) :
-      //특정 문자열을 앞에 채운다. 예를 들어 달(month)을 표현시 01,02,03 ...12
-      //이렇게 두 글자 자리 포맷을 유지하고 싶다면.. 사용
-      //현업에서 매우 많이 사용!
-      month = "4";
-      // console.log(month);
-      // //월이 한자리이면 두자리로 표현하도록 코드를 작성
-      // if (month.length < 2) {
-      //   month += "0" + month;
-      // }
-      // console.log(month);
-      console.log(month.padStart(2, 0));
+            //12. ***** padStart(문자열 전체 길이, 앞에- 채울 문자열) :
+            //특정 문자열을 앞에 채운다. 예를 들어 달(month)을 표현시 01,02,03 ...12
+            //이렇게 두 글자 자리 포맷을 유지하고 싶다면.. 사용
+            //현업에서 매우 많이 사용!
+            month = "4";
+            // console.log(month);
+            // //월이 한자리이면 두자리로 표현하도록 코드를 작성
+            // if (month.length < 2) {
+            //   month += "0" + month;
+            // }
+            // console.log(month);
+            console.log(month.padStart(2, 0));
 
-      //13. padEnd(문자열 전체 길이, 뒤에 채울 문자열) : 거의 사용하지 않는다.
-      let studentNumber = "2201";
-      console.log(studentNumber.padEnd(5, "s"));
+            //13. padEnd(문자열 전체 길이, 뒤에 채울 문자열) : 거의 사용하지 않는다.
+            let studentNumber = "2201";
+            console.log(studentNumber.padEnd(5, "s"));
 
-      //14. *charAt(인덱스): 인덱스에 해당하는 글자 하나를 리턴
-      studentNumber = "S2201";
-      if (studentNumber.toLowerCase().charAt(0) === "s") console.log("학생");
+            //14. *charAt(인덱스): 인덱스에 해당하는 글자 하나를 리턴
+            studentNumber = "S2201";
+            if (studentNumber.toLowerCase().charAt(0) === "s")
+                console.log("학생");
 
-      //15. charCodeAt(인덱스) : 인덱스에 해당하는 글자의 유니코드 값을 리턴
-      str = "가힣";
-      console.log(str.charCodeAt(0)); //44032
-      console.log(str.charCodeAt(1)); //55203
-      str = "A";
-      console.log(str.charCodeAt(0));
+            //15. charCodeAt(인덱스) : 인덱스에 해당하는 글자의 유니코드 값을 리턴
+            str = "가힣";
+            console.log(str.charCodeAt(0)); //44032
+            console.log(str.charCodeAt(1)); //55203
+            str = "A";
+            console.log(str.charCodeAt(0));
 
-      //******16. split() : 파라미터로 전달 받은 값을 기본으로 문자열을 쪼개서 리턴한다.
-      //리턴타입은 배열이다
-      let emails =
-        "john@gmail.com, jane@gamil.com, hong@gmail.com, kim@hanmail.net, lee@naver.com";
-      let email = emails.split(",");
-      console.log(email);
+            //******16. split() : 파라미터로 전달 받은 값을 기본으로 문자열을 쪼개서 리턴한다.
+            //리턴타입은 배열이다
+            let emails =
+                "john@gmail.com, jane@gamil.com, hong@gmail.com, kim@hanmail.net, lee@naver.com";
+            let email = emails.split(",");
+            console.log(email);
 
-      //17. *** startsWith(" ") : 파라미터로 시작하는 여부를 boolean으로 반환
-      let url = "website.com";
-      if (url.startsWith("https://") === false) {
-        console.log("잘못된 url주소입니다.");
-      }
-      if (url.slice(0, 8) === "https://" || url.slice(0, 7) === "http://") {
-        console.log("유효한 주소");
-      } else {
-        console.log("유효하지 않은 주소");
-      }
+            //17. *** startsWith(" ") : 파라미터로 시작하는 여부를 boolean으로 반환
+            let url = "website.com";
+            if (url.startsWith("https://") === false) {
+                console.log("잘못된 url주소입니다.");
+            }
+            if (
+                url.slice(0, 8) === "https://" ||
+                url.slice(0, 7) === "http://"
+            ) {
+                console.log("유효한 주소");
+            } else {
+                console.log("유효하지 않은 주소");
+            }
 
-      //18 ***endsWith : 파라미터로 종류하는지 여부를 boolean으로 반환
-      url = "website.com";
-      console.log(url.endsWith("com"));
-    </script>
-  </body>
+            //18 ***endsWith : 파라미터로 종류하는지 여부를 boolean으로 반환
+            url = "website.com";
+            console.log(url.endsWith("com"));
+        </script>
+    </body>
 </html>

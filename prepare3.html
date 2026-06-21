@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수행평가 연습</title>
+  </head>
+  <body>
+    <script>
+      const peoples = [
+        { name: "민수", age: 17 },
+        { name: "지은", age: 22 },
+        { name: "서연", age: 19 },
+        { name: "현우", age: 25 },
+        { name: "유진", age: 20 },
+      ];
+      let adult = peoples
+        .filter((people) => {
+          return people.age >= 20;
+        })
+        .map((people) => {
+          return people.name;
+        });
+      console.log(adult);
+
+      const email = "jaehee@gmail.com";
+      let arr = email.split("@");
+      console.log("이름 :", arr[0]);
+      console.log("이메일 : ", arr[1]);
+
+      const subjects = "국어,영어,수학,과학,사회";
+      let subject = subjects.split(",");
+      for (let x of subject) {
+        console.log(x);
+      }
+      const phone = "010-1234-5678";
+      let phoneNumber = phone.split("-");
+      console.log(phoneNumber[phoneNumber.length - 1]);
+
+      const students = [
+        { name: "민수", major: "경영학과", grade: 1 },
+        { name: "지은", major: "패션학과", grade: 2 },
+        { name: "서연", major: "영문학과", grade: 1 },
+        { name: "현우", major: "경영학과", grade: 3 },
+        { name: "유진", major: "패션학과", grade: 2 },
+      ];
+      function searchMajoir(major) {
+        return students.filter((student) => {
+          return student.major === major;
+        });
+      }
+      console.log(searchMajoir("경영학과"));
+      //여기부터
+      const birth = "2008-03-14";
+      const birth1 = birth.split("-");
+      console.log("출생연도 : ", birth1[0]);
+      console.log("출생월 : ", birth[1]);
+      console.log("출생일 : ", birth[2]);
+
+      const words = ["나는", "오늘", "자바스크립트를", "공부한다"];
+      const word = words.join(" ");
+      console.log(word);
+
+      const foods = ["피자", "치킨", "햄버거", "떡볶이", "라면"];
+      const food = foods.slice(1, 4);
+      console.log(food);
+
+      const drinks = [
+        { name: "콜라", price: 1500 },
+        { name: "사이다", price: 1200 },
+        { name: "커피", price: 2500 },
+        { name: "물", price: 800 },
+      ];
+      const pd = drinks.filter((drink) => {
+        return drink.price >= 1500;
+      });
+      console.log(pd);
+
+      const users = [
+        { name: "민수", email: "a@gmial.com" },
+        { name: "지은", email: "b@gmail.com" },
+        { name: "현우", email: "c@gmail.com" },
+      ];
+      const useremail = users.map(function (user) {
+        return user.email;
+      });
+      console.log(useremail);
+
+      const scores = [78, 95, 63, 100, 82];
+      const descscores = scores.sort(function (a, b) {
+        return b - a;
+      });
+      console.log(descscores);
+
+      const ascscores = scores.sort(function (a, b) {
+        return a - b;
+      });
+      console.log(ascscores);
+
+      const products = [
+        { name: "키보드", price: 50000 },
+        { name: "마우스", price: 30000 },
+        { name: "모니터", price: 200000 },
+      ];
+      const total = products.reduce((prices, product) => {
+        prices += product.price;
+        return prices;
+      }, 0);
+      console.log(total);
+
+      const people1 = [
+        { name: "민수", age: 17 },
+        { name: "지은", age: 22 },
+        { name: "서연", age: 19 },
+        { name: "현우", age: 25 },
+        { name: "유진", age: 20 },
+      ];
+      const age = people1
+        .filter((people) => {
+          return people.age >= 20;
+        })
+        .map((people) => {
+          return people.name;
+        });
+      console.log(age);
+
+      const students1 = [
+        { name: "민수", age: 17, major: "경영학과" },
+        { name: "지은", age: 22, major: "패션학과" },
+        { name: "서연", age: 19, major: "영문학과" },
+        { name: "현우", age: 25, major: "경영학과" },
+        { name: "유진", age: 20, major: "패션학과" },
+      ];
+      function search(key, value) {
+        return students1.filter((student) => {
+          return student[key] === value;
+        });
+      }
+      console.log(search("major", "경영학과"));
+      console.log(search("age", 20));
+
+      const student2 = [
+        { name: "민수", age: 17, major: "경영학과" },
+        { name: "지은", age: 22, major: "패션학과" },
+        { name: "서연", age: 19, major: "영문학과" },
+        { name: "현우", age: 25, major: "경영학과" },
+        { name: "유진", age: 20, major: "패션학과" },
+      ];
+      function search1(key, value) {
+        return student2
+          .filter((student) => {
+            return student[key] === value;
+          })
+          .map((student) => {
+            return student.name;
+          });
+      }
+      console.log(search1("major", "경영학과"));
+      console.log(search1("age", 20));
+    </script>
+  </body>
+</html>

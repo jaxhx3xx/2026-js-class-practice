@@ -394,15 +394,59 @@
 
             //실무활용 : push(), join() 대체
             //newUserList를 표 (table id="user")로 표현
-            let arr = [];
-            let newUserList = newUserList1.map(function(user){
-                arr.map("<tr><td>" +user.lastName+user.firstName+ "</td>"),
-                arr.map("<td>" +  user.email + "</td></tr>")
+            let newUserList = newUserList1.map((user)=>{
+                return "<tr><td>"+user.fullName+"</td><td>"+user.email+"</td><tr>";
             })
-            console.log(arr);
-            let text = arr.join("");
-            document.getElementById("user").innerHTML = text;
-            let newUser
+            .join("");
+            document.getElementById("user").innerHTML=newUserList;
+
+            /*13. reduce(p1,p2,p3,p4) : 배열의 누적합
+            또는 특정한 조건에 해당하는 값만 추출하는 함수
+            p1: accumulator => 누적값
+            p2: currentValue => 현재값
+            p3 :currentIndex => 현재 배열 인덱스, 생략가능
+            p4 : arr=> 전체배열, 생략가능
+            누적합 형식
+            배열.reduce((누적값,현재값)=>{
+                return 다음 누산기에 넘겨줄 값
+            },초기값)
+            */
+
+            points = [89,45,78,96,100];
+            sum = points.reduce((sum,i)=>{
+                sum += i;
+                return sum;
+            },0);
+            console.log(sum);
+
+            products = [
+                {
+                    id: 1,
+                    name: "맥북 프로",
+                    price: 2500000,
+                },
+                {
+                    id: 2,
+                    name: "아이패드 에어",
+                    price: 900000,
+                },
+                {
+                    id: 1,
+                    name: "기계식 키보드",
+                    price: 150000,
+                },
+                {
+                    id: 1,
+                    name: "허브 매트",
+                    price: 30000,
+                },
+            ];
+
+            let prices = products.reduce((sum1,product)=>{
+                sum1+=product.price;
+                return sum1;
+            },0);
+            console.log(prices);
             // 참고사이트 : 모던자바스크립트
         </script>
     </body>

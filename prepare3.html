@@ -157,6 +157,47 @@
       }
       console.log(search1("major", "경영학과"));
       console.log(search1("age", 20));
+
+      //여기부터
+      const students2 = [
+        { name: "민수", age: 17, major: "경영학과" },
+        { name: "지은", age: 22, major: "패션학과" },
+        { name: "서연", age: 19, major: "영문학과" },
+        { name: "현우", age: 25, major: "경영학과" },
+        { name: "유진", age: 20, major: "패션학과" },
+      ];
+      const selmajor = students2
+        .filter((student) => {
+          return student.age >= 20;
+        })
+        .map((student) => {
+          return student.major;
+        });
+      console.log(selmajor);
+
+      const emails = [
+        "kim@gmail.com",
+        "lee@naver.com",
+        "park@gmail.com",
+        "choi@daum.net",
+      ];
+      //const Domain = emails.split("@");
+      // const domainmap = Domain.map((email) => {
+      //   return Domain[Domain.length - 1];
+      // });
+
+      const products2 = [
+        { name: "키보드", price: 50000 },
+        { name: "마우스", price: 30000 },
+        { name: "모니터", price: 200000 },
+        { name: "이어폰", price: 70000 },
+      ];
+      function searchPrice(p) {
+        return products.filter((product) => {
+          return product.price > p;
+        });
+      }
+      console.log(searchPrice(60000));
     </script>
   </body>
 </html>

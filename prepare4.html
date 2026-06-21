@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>미림 카페 주문관리 프로그램 다시 만들기</title>
+  </head>
+  <body>
+    <select name="" id="drinkList">
+      메뉴
+      <option value=""></option>
+    </select>
+    <script>
+      const menuList = [
+        { name: "아메리카노", price: 3000, category: "coffee" },
+        { name: "카페라떼", price: 4000, category: "coffee" },
+        { name: "바닐라라떼", price: 4500, category: "coffee" },
+        { name: "초코라떼", price: 4200, category: "nonCoffee" },
+        { name: "레몬에이드", price: 5000, category: "ade" },
+        { name: "자몽에이드", price: 5200, category: "ade" },
+      ];
+      const loadmenu = () => {
+        let tags = [];
+        for (let x of menuList) {
+          tags.push(
+            `<option value  = "${x.name}"> ${x.name} : ${x.price}</option>`,
+          );
+        }
+        return tags;
+      };
+      const slemenu = loadmenu();
+      document.getElementById("drinkList").innerHTML = slemenu.join("");
+      console.log(menu);
+    </script>
+  </body>
+</html>

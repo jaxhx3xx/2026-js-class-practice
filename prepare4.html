@@ -6,10 +6,8 @@
     <title>미림 카페 주문관리 프로그램 다시 만들기</title>
   </head>
   <body>
-    <select name="" id="drinkList">
-      메뉴
-      <option value=""></option>
-    </select>
+    <label for="menuSelect">메뉴</label>
+    <select id="menuSelect"></select>
     <script>
       const menuList = [
         { name: "아메리카노", price: 3000, category: "coffee" },
@@ -19,18 +17,18 @@
         { name: "레몬에이드", price: 5000, category: "ade" },
         { name: "자몽에이드", price: 5200, category: "ade" },
       ];
-      const loadmenu = () => {
-        let tags = [];
+
+      const orderList = [];
+      const loadMenu = () => {
         for (let x of menuList) {
-          tags.push(
-            `<option value  = "${x.name}"> ${x.name} : ${x.price}</option>`,
+          orderList.push(
+            `<option value = "${x.name}"> ${x.name} : ${x.price}</option>`,
           );
         }
-        return tags;
+        return orderList;
       };
-      const slemenu = loadmenu();
-      document.getElementById("drinkList").innerHTML = slemenu.join("");
-      console.log(slemenu);
+      const loadMenu1 = loadMenu();
+      document.getElementById("menuSelect").innerHTML = loadMenu1.join("");
     </script>
   </body>
 </html>

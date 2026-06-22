@@ -29,7 +29,46 @@
       </thead>
       <tbody id="tbl"></tbody>
     </table>
+    <select name="" id="subject">
+      과목
+    </select>
+
+    <table>
+      <thead>
+        <th>이름</th>
+        <th>나이</th>
+      </thead>
+      <tbody id="tbl1"></tbody>
+    </table>
+    <select name="" id="adult"></select>
     <script>
+      const students4 = [
+        { name: "민수", age: 17 },
+        { name: "지은", age: 22 },
+        { name: "현우", age: 25 },
+        { name: "유진", age: 20 },
+      ];
+
+      let adult4 = students4
+        .filter((student) => {
+          return student.age >= 20;
+        })
+        .map((student) => {
+          return `<tr><td>${student.name}</td><td>${student.age}</td></tr>`;
+        });
+
+      let outputadult4 = adult4;
+      console.log(outputadult4);
+      document.getElementById("tbl1").innerHTML = outputadult4.join("");
+
+      const subjects2 = ["국어", "영어", "수학", "과학", "사회"];
+
+      let outputsub = subjects2.map((subject) => {
+        return `<option value = "${subject}"> ${subject} </option>`;
+      });
+      let outputsub2 = outputsub;
+      document.getElementById("subject").innerHTML = outputsub2.join("");
+
       const students3 = [
         { name: "민수", age: 17 },
         { name: "지은", age: 22 },
@@ -246,6 +285,71 @@
         });
       }
       console.log(searchPrice(60000));
+
+      //여기부터
+      const departments = [
+        "경영학과",
+        "경영학과",
+        "패션학과",
+        "패션학과",
+        "영문학과",
+      ];
+      function findDepartment(room) {
+        return departments[room - 1];
+      }
+      console.log(findDepartment(3));
+      console.log(findDepartment(5));
+
+      const students5 = [
+        { room: 1, major: "경영학과" },
+        { room: 2, major: "경영학과" },
+        { room: 3, major: "패션학과" },
+        { room: 4, major: "패션학과" },
+        { room: 5, major: "영문학과" },
+      ];
+
+      function findMajor(room) {
+        return students5
+          .filter((student) => {
+            return student.room === room;
+          })
+          .map((student) => {
+            return student.major;
+          });
+      }
+      console.log(findMajor(4));
+
+      const students6 = [
+        { room: 1, major: "경영학과" },
+        { room: 2, major: "경영학과" },
+        { room: 3, major: "패션학과" },
+        { room: 4, major: "패션학과" },
+        { room: 5, major: "영문학과" },
+      ];
+
+      function search6(key, value) {
+        return students6.filter((student) => {
+          return student[key] === value;
+        });
+      }
+      console.log(search6("room", 3));
+
+      const students7 = [
+        { name: "민수", age: 17 },
+        { name: "지은", age: 22 },
+        { name: "현우", age: 25 },
+        { name: "유진", age: 20 },
+      ];
+      let adult7 = students7
+        .filter((student) => {
+          return student.age >= 20;
+        })
+        .map((student) => {
+          return `<option value = "${student.name}"> ${student.name}</option>`;
+        });
+      let outputadult7 = adult7;
+      console.log(outputadult7);
+      document.getElementById("adult").innerHTML = outputadult7;
     </script>
   </body>
 </html>

@@ -7,7 +7,17 @@
   </head>
   <body>
     <label for="menuSelect">메뉴</label>
-    <select id="menuSelect"></select>
+    <select id="menuSelect"></select
+    ><br />
+    <input
+      type="text"
+      name=""
+      id="searchinput"
+      placeholder="메뉴명을 입력해주세요"
+    />
+
+    <button onclick="searchMenu()">검색</button>
+    <div id="searchResult">검색 결과가 여기에 표시됩니다.</div>
     <script>
       const menuList = [
         { name: "아메리카노", price: 3000, category: "coffee" },
@@ -29,6 +39,18 @@
       };
       const loadMenu1 = loadMenu();
       document.getElementById("menuSelect").innerHTML = loadMenu1.join("");
+
+      let searchMenu = () => {
+        const findmenu = document.getElementById("searchinput").value.trim();
+        let text = "";
+        for (let menu of menuList) {
+          if (menu.name === findmenu) {
+            text += menu.name + " : " + menu.price;
+          }
+        }
+        if (text === "") text += "그런메뉴 없습니다";
+        document.getElementById("searchResult").innerText = text;
+      };
     </script>
   </body>
 </html>

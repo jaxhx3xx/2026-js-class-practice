@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수행평가 준비 문자열 매개함수</title>
+  </head>
+  <body>
+    <script>
+      let email = "jaehee@gmail.com";
+      console.log(email.indexOf("@"));
+
+      console.log(email.slice(0, 6));
+
+      let phone = "010-1234-5678";
+      phonesplit = phone.split("-");
+      console.log(phonesplit[phonesplit.length - 2]);
+
+      let name = "          정재희          ";
+      console.log(name.trim());
+
+      let url = "www.naver.com";
+      if (url.startsWith("https://")) {
+        console.log("올바른 주소");
+      } else {
+        console.log("올바르지 않는 주소");
+      }
+      let fileName = "report.pdf";
+      if (fileName.endsWith(".pdf")) {
+        console.log("pdf 파일입니다.");
+      }
+
+      let data = "20260421";
+      let year = data.substr(0, 4);
+      console.log(year + "년");
+      let month = data.substr(4, 2);
+      console.log(month + "월");
+      let day = data.substr(6, 2);
+      console.log(day + "일");
+
+      let id = "s2201";
+      if (id.charAt(0).toLowerCase() === "s") {
+        console.log("학생입니다");
+      }
+
+      month = "4";
+      console.log(month.padStart(2, 0));
+
+      let emails = "john@gmail.com,jane@gmail.com,hong@gmail.com";
+      let email1 = emails.split(",");
+      for (let x of email1) {
+        console.log(x);
+      }
+
+      emails = "john@gmail.com,jane@naver.com,hong@gmail.com,kim@daum.net";
+      let email2 = emails.split(",");
+      for (let x of email2) {
+        if (x.endsWith("gmail.com")) {
+          console.log(x);
+        }
+      }
+      let files = "report.pdf,image.jpg,homework.pdf,music.mp3";
+      let filesarr = files.split(",");
+      for (let x of filesarr) {
+        if (x.endsWith(".pdf")) {
+          console.log(x);
+        }
+      }
+      let csvData = "민수,90\n,지은,80\n,현우,95\n,유진,70";
+      csvData = csvData.split("\n");
+      for (let x of csvData) {
+        let data = x.split(",");
+
+        let name = data[0];
+        let score = Number(data[1]);
+        if (score >= 90) {
+          console.log(name);
+        }
+      }
+    </script>
+  </body>
+</html>

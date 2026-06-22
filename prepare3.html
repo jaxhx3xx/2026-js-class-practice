@@ -350,6 +350,44 @@
       let outputadult7 = adult7;
       console.log(outputadult7);
       document.getElementById("adult").innerHTML = outputadult7;
+
+      const numbers = [10, 20, 30, 40, 50];
+      let sum = numbers.reduce((price, i) => {
+        price += i;
+        return price;
+      }, 0);
+      console.log(sum);
+
+      const products3 = [
+        { name: "키보드", price: 50000 },
+        { name: "마우스", price: 30000 },
+        { name: "모니터", price: 200000 },
+      ];
+
+      let total3 = products3.reduce((sum, i) => {
+        sum += i.price;
+        return sum;
+      }, 0);
+      console.log(total3);
+
+      const students8 = [
+        { name: "민수", score: 90 },
+        { name: "지은", score: 80 },
+        { name: "현우", score: 95 },
+      ];
+
+      let total8 = students8.reduce((sum, stduent) => {
+        sum += stduent.score;
+        return sum;
+      }, 0);
+      console.log(total8);
+
+      const numbers2 = [5, 10, 15, 20];
+      let avg2 = numbers2.reduce((sum, i) => {
+        sum += i;
+        return sum;
+      });
+      console.log(avg2 / numbers2.length);
     </script>
   </body>
 </html>

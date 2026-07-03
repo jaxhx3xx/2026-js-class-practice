@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>set_object</title>
+    </head>
+    <body>
+        <script>
+            /* ECMA 6버전에서 추가된 객체
+            - 배열과 매우 유사하나, 유일한 요소만 갖는다.
+            - 따라서 기존의 긴 소스들을 간단하게 줄일 수 있다.
+            - 필요한 데이터의 특성(고유한 데이터)에 따라 Set 을 사용하면 많은 수고를 줄일 수 있다.
+            - 파이썬처럼 add, has, delete, clear 등의 함수를 내장하고 있다*/
+
+            //다음은 좋아하는 음식을 단답형으로 엽력하는 설문 조사 => 중복된 요소 제거
+            //사용자가 입력한 음식 종류를 저장한 배열 foods
+            let foods = [
+                "냉면",
+                "김밥",
+                "옥수수",
+                "연어",
+                "떡볶이",
+                "족발",
+                "김밥",
+            ];
+
+            //1. 제거
+            let uniqueFood = [];
+            // for (let food of foods) {
+            //     if (uniqueFood.includes(food)) continue;
+            //     else uniqueFood.push(food);
+            // }
+            // console.log(uniqueFood);
+
+            // 2. filter를 이용해 배열에서 조건에 맞는 것을 추출
+            foods.filter((food) => {
+                if (!uniqueFood.includes(food)) uniqueFood.push(food);
+            });
+            console.log(uniqueFood);
+
+            foods = [
+                "냉면",
+                "김밥",
+                "옥수수",
+                "연어",
+                "떡볶이",
+                "족발",
+                "김밥",
+            ];
+            //3. new Set(), add() 함수
+            let uniqueFood2 = new Set();
+            uniqueFood2.add("냉면");
+            uniqueFood2.add("치킨");
+            uniqueFood2.add("피자");
+            uniqueFood2.add("치킨");
+            uniqueFood2.add("파스타");
+            uniqueFood2.add("족발");
+
+            console.log(uniqueFood2);
+
+            //4. has()
+            console.log(uniqueFood2.has("김밥"));
+
+            //5. delete()
+            console.log(uniqueFood2.delete("파스타"));
+            console.log(uniqueFood2);
+
+            //6. clear()
+            uniqueFood2.clear();
+            console.log(uniqueFood2);
+        </script>
+    </body>
+</html>

@@ -9,6 +9,7 @@
         <!-- 오늘을 기준으로 7일전 오늘까지 표현  -->
         <input type="date" name="" id="startDate" /> -
         <input type="date" name="" id="endDate" />
+        <script src="./js/common.js"></script>
         <script>
             //1. 오늘 날짜 정보 가져오기
             let now = new Date();
@@ -40,8 +41,35 @@
             console.log(today);
             document.getElementById("endDate").value = today;
 
+            //6. new Date(밀리초) : 밀리초에 해당하는 날짜 구하기
+            let thatDay = new Date(0); //밀리초
+            console.log(thatDay);
+
+            //7. getTime() : 특정시간에 밀리초를 구하는 내장함수
+            let nowmilliSec = now.getTime();
+            console.log(nowmilliSec);
+
+            //8. 현재의 밀리초 - n일 간의 밀리초 만큼
+            let oneDay = 24 * 60 * 60 * 1000;
+            console.log(oneDay);
+            sevenDaysAgo = new Date(nowmilliSec - oneDay * 7);
+            console.log(sevenDaysAgo);
+
+            //9. 오늘을 기준으로
+            //이거의 함수는 common.js에 위치하고 있음
+            nDaysAgoFunc(8);
+            nDaysAgoFunc(-7);
+
+            //10. 오늘을 기준으로 며칠 전, 후를 정해진 포맷으로 구하는 함수(년도를 2자리 또는 4자리로 받을경우)
+            //이거의 함수는 common.js위치함
+            nDaysAgoFunc2(8, "YYYY-MM-DD");
+            nDaysAgoFunc2(-7, "YY--MM-DD");
+
+            //11. 오늘을 기준으로 며칠 전, 후를 정해진 포맷으로 구하는 함수(년도를 4가지로 받을 경우)
+            nDaysAgoFunc3(8, "YYYY/MM/DD");
+            nDaysAgoFunc3(-7, "YYYY.MM.DD");
             //6. 오늘을 기준으로 7일 전을 YYYY-MM_DD포매으로 id="startDate에 출력"
-            const sevenDaysAgo =
+            const sevenDaysAgo1 =
                 year +
                 "-" +
                 (month + 1).toString().padStart(2, 0) +
@@ -49,6 +77,8 @@
                 (day - 7).toString().padStart(2, 0);
             console.log(sevenDaysAgo);
             document.getElementById("startDate").value = sevenDaysAgo;
+
+            //7
         </script>
-    </body> 
+    </body>
 </html>

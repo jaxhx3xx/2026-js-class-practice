@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map 객체 내장함수</title>
+  </head>
+  <body>
+    <script>
+      /*- key 와 value 로 이루어진 객체, 마치 Object 와 유사
+      - key에 문자가 아닌 값이 올 수 있으므로, 키가 문자열이 아닌 object를 만들고자 할 경우 대체제로 활용이 가능
+      - 파이선의 딕셔너리와 유사
+      - Object 와 Map의 차이
+                                  object              map
+          key                     문자만 가능          모든 타입 가능
+          size property           속성 제공 안 함      size 속성 제공
+          for ...in..의 순서       보장 안 함           보장 함
+      */
+
+      //object
+      let oPerson = {};
+      oPerson.name = "강태인";
+      oPerson.email = "kang@gmail.com";
+      oPerson.phone = "010-1234-5678";
+      oPerson["180"] = 75;
+
+      //객체 출력 키 : 값
+      for (let key in oPerson) {
+        console.log(key, " : ", oPerson[key]);
+      }
+      console.log("요소 갯수 : ", Object.keys(oPerson).length); //4
+
+      // 1.map생성
+      let personMap = new Map();
+      //2. set() : map 요소추가
+      personMap.set("name", "강태인");
+      personMap.set("email", "kang@gmail.com");
+      personMap.set("phone", "010-1234-5678");
+      personMap.set(180, 75);
+
+      //3. 출력 forEach : 파리미터 순서 주의, 요소의 추렭 순서 보장, key와 value가 바껴서 나옴
+      personMap.forEach((value, key) => {
+        console.log(`${key} : ${value}`);
+      });
+      //4. size 속성 지원
+      console.log(`요소갯수 : ${personMap.size}`); //4
+
+      //5. keys() : 키 갖고오기
+      for (let key of personMap.keys()) {
+        console.log(key);
+      }
+      //6. values() : 값 가져오기
+      for (let value of personMap.values()) {
+        console.log(value);
+      }
+      //7. get() : 키값을 주고 값을 읽어오기,
+      console.log(personMap.get(180));
+
+      //8. has() : 키의 존재여부
+      console.log(personMap.has("hobby")); //false
+      console.log(personMap.has("name")); //true
+
+      //9.delete(key) : 해당 요소를 삭제
+      console.log(personMap.delete("email"));
+      console.log(`요소갯수 : ${personMap.size}`); //3
+
+      //10. clear() : 전체 삭제
+      //personMap.clear();
+    </script>
+  </body>
+</html>

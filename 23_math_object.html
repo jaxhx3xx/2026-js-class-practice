@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>math_object</title>
+  </head>
+  <body>
+    <script>
+      //Math
+      //new Set(), new Map(),
+      //1. round()
+      console.log(Math.round(2.2)); //2
+      console.log(Math.round(2.9)); //3
+
+      //2. ceil()
+      console.log(Math.ceil(2.2)); //3
+      console.log(Math.ceil(2.9)); //3
+      //페이징 처리
+      //게시판에 작성한 글이 103개이고, 한 페이지에 10개씩 게시한다고 가정하면
+      let total = 103;
+      let CountPagePer = 10;
+      let totalPage = Math.ceil(total / CountPagePer);
+      console.log(`필요한 페이지 수 : ${totalPage}`);
+
+      //3. floor()
+      console.log(Math.floor(2.2)); //2
+      console.log(Math.floor(2.9)); //2
+      console.log(Math.floor(-2.2)); //-3
+      console.log(Math.floor(-2.9)); //-3
+
+      //4. trunc() *****floor와 trunc와 차이점 시험문제 출제 *****
+      console.log(Math.trunc(2.2)); //2
+      console.log(Math.trunc(2.9)); //2
+      console.log(Math.trunc(-2.2)); //-2
+      console.log(Math.trunc(-2.9)); //-2
+
+      //5. sign()
+      console.log(Math.sign(2.2)); //1
+      console.log(Math.sign(0)); //0
+      console.log(Math.sign(-2.2)); //-1
+
+      //6. pow()
+      console.log(Math.pow(6, 3)); //216 6의 3승
+      console.log(Math.pow(-6, 3)); //-216
+      console.log(Math.pow(-6, 4)); //1296
+      console.log(Math.pow(6, -2)); //0.027777777777777776
+
+      //7.sqrt()
+      console.log(Math.sqrt(1296)); //36
+      console.log(Math.sqrt(64)); //8
+
+      //8. abs()
+      console.log(Math.abs(2.9)); //2.9
+      console.log(Math.abs(-2.2)); //2.2
+
+      //9. min()
+      console.log(Math.min(2, 4, 5, 7, -9, -12)); //-12
+      console.log(Math.min(2, 4, 5)); //2
+
+      //10. max()
+      console.log(Math.max(2, 4, 5, 7, -9, -12)); //7
+      console.log(Math.max(2, 4, 5)); //5
+
+      //11. random() <= random() < 1
+      console.log(Math.random());
+      //활용1. 0~9
+      console.log(parseInt(Math.random() * 10));
+
+      //활용2. 1~10
+      console.log(Math.floor(Math.random() * 10 + 1));
+
+      //활용3. 1~100
+      console.log(parseInt(Math.random() * 100 + 1));
+
+      //활용4. 시작값과 종료값을 주면 정수값(시작, 종료 포함)을 random하게 나오게 하는 함수를 작성하여 활용해보자
+      let getRandomInteger = (min, max) => {
+        console.log(Math.floor(Math.random()* (max - min + 1))+min);
+      };
+      getRandomInteger(7, 9);
+    </script>
+  </body>
+</html>

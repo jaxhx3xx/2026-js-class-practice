@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map 실무 예제</title>
+  </head>
+  <body>
+    <script>
+      /* 실무 예제 : 온라인 쇼핑몰 장바구니 관리 쇼핑물 웹사이트를 만들 때
+      장바구니는 아래 기능이 반드시 필요하다 1. 상품 담기(추가) 2. 이미 담긴
+      상품인지 확인하고 수량 늘리기(조회 및 수정) 3. 상품빼기 4. 장바구니에
+      총몇종류의 상품이 있는 확인 (개수파악)
+      개발자들은 object나 set보다 map을 선호할까?
+      1. 갯수 구하기 쉽다 : size속성
+      2. 연산속도빠름
+      3. key에 어떤 값이던 올 수 있다. */
+
+      const myCart = new Map();
+      //이미 장바구니에 들어있는 데이터
+      myCart.set("product_01", {
+        name: "무선헤드셋",
+        price: 100000,
+        quantity: 1,
+      });
+      //이미 장바구니에 들어있는 데이터
+      myCart.set("product_02", {
+        name: "립글로스",
+        price: 30000,
+        quantity: 5,
+      });
+
+      // for (const [productId, productValue] of myCart) {
+      //   console.log(`${productValue.name} : ${productValue.quantity}`);
+      // }
+      //사용자로부터 추가하려고 입력이 들어옴
+      const userInput = "product_01";
+
+      //장바구니에 있는지 확인 후 처리 => 있으면 quantity 증가 없다면 장바구니에 추가
+      if (myCart.has(userInput)) {
+        if (prompt("또 사시겠습니까? yes or no") === "yes") {
+          const item = myCart.get(userInput);
+          item.quantity++;
+          myCart.set(userInput, item);
+          console.log(
+            `현재 장바구니에 담긴 ${item.name}의 갯수 : ${item.quantity}`,
+          );
+        }
+      } else {
+        console.log("추가완료!!");
+      }
+      myCart.forEach((value, key) => {
+        console.log(`${value.name} : ${value.quantity}`);
+      });
+      console.log("========================");
+      console.log("나의 장바구니");
+      myCart.forEach((value, key) => {
+        console.log(`${value.name} : ${value.quantity}`);
+      });
+
+      let count = 0;
+      let total = 0;
+      // myCart.forEach((value, key) => {
+      //   count += value.quantity;
+      //   total += value.quantity * value.price;
+      // });
+
+      // console.log(`총 갯수 : ${count} 개`);
+      // console.log(`총 가격 : ${total} 원`);
+
+      for (const [productId, productValue] of myCart) {
+        count += productValue.quantity;
+        total += productValue.quantity * productValue.price;
+      }
+      console.log(`총 갯수 : ${count} 개`);
+      console.log(`총 가격 : ${total} 원`);
+    </script>
+  </body>
+</html>

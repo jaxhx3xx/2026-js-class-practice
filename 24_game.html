@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>랜덤게임</title>
+  </head>
+  <body>
+    <script src="js/common.js"></script>
+    <button onclick="ShowSciResult()" id="sci" value="0">가위✌️</button>
+    <button onclick="ShowRockResult()" id="rock" value="1">바위✊</button>
+    <button onclick="ShowBoResult()" id="bo" value="2">보✋</button>
+    <script>
+      //조건 common.js에 있는 getRandomInteger사용
+      let arr = ["가위", "바위", "보"];
+      //   컴퓨터가 0 : 가위 1 : 바위 2 : 보
+
+      function ShowSciResult() {
+        let random = getRandomInteger(0, 2);
+        console.log("사용자 : 가위");
+        console.log("컴퓨터 : ", arr[random]);
+        if (random == 0) {
+          console.log("비김");
+        } else if (random == 1) {
+          console.log("컴퓨터 승리");
+        } else if (random == 2) {
+          console.log("인간 승리");
+        }
+      }
+      function ShowRockResult() {
+        let random = getRandomInteger(0, 2);
+        console.log("사용자 : 바위");
+        console.log("컴퓨터 : ", arr[random]);
+
+        if (random == 0) {
+          console.log("인간 승리");
+        } else if (random == 1) {
+          console.log("비김");
+        } else if (random == 2) {
+          console.log("컴퓨터 승리");
+        }
+      }
+      function ShowBoResult() {
+        let random = getRandomInteger(0, 2);
+        console.log("사용자 : 보");
+        console.log("컴퓨터 : ", arr[random]);
+
+        if (random == 0) {
+          console.log("컴퓨터 승리");
+        } else if (random == 1) {
+          console.log("인간 승리");
+        } else if (random == 2) {
+          console.log("비김");
+        }
+      }
+    </script>
+  </body>
+</html>

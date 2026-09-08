@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가위바위보 게임</title>
+  </head>
+  <body>
+    <script src="js/common.js"></script>
+    <button onclick="ShowResult(value)" id="sci" value="0">가위✌️</button>
+    <button onclick="ShowResult(value)" id="rock" value="1">바위✊</button>
+    <button onclick="ShowResult(value)" id="bo" value="2">보✋</button>
+    <script>
+      //조건 common.js에 있는 getRandomInteger사용
+      let Rcp = [
+        { name: "가위✌️", result: 0 },
+        { name: "바위✊", result: 1 },
+        { name: "보✋", result: 2 },
+      ];
+      //   가위는 바위한테 지고 보한테 이김
+      //   바위는 보한테 지고 가위한테 이김
+      //   보는 가위한테 지고 바위한테 이김
+      //   컴퓨터가 0 : 가위 1 : 바위 2 : 보
+      function ShowResult(n) {
+        let random = getRandomInteger(0, 2);
+
+        console.log(`사용자 : ${Rcp[n].name}`);
+        console.log("컴퓨터 : ", Rcp[random].name);
+
+        if (Rcp[n].result == Rcp[random].result) {
+          console.log("비김");
+        } else if ((n - random + 3) % 3 == 2) {
+          console.log("승리");
+        } else {
+          console.log("패배");
+        }
+      }
+    </script>
+  </body>
+</html>

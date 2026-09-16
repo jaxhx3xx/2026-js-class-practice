@@ -42,7 +42,8 @@ const nDaysAgoFunc2 = (day, format) => {
   }
   console.log(`${year}-${month}-${dayNum}`);
 };
-const nDaysAgoFunc3 = (day, format) => {
+//파라미터에서 받은 수만큼 전의 날 출력
+const nDaysAgoFunc3 = (day, format = "YYYY-MM-DD") => {
   let date = new Date();
   let nowmilliSec = date.getTime();
   let oneDay = 24 * 60 * 60 * 1000;

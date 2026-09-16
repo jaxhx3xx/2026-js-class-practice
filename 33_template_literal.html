@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>template_literal</title>
+  </head>
+  <body>
+    <script>
+      /* template literal 
+      - 원하는 모양대로 ``안에 기술 
+      - 주의할 점 : ${} 객체에 toString()를 실행 set, object, map => [object Set]
+      */
+      function sayHello1(firstName, lastName) {
+        console.log("Hello " + firstName + " " + lastName + "!~");
+        console.log(`Hello ${firstName} ${lastName}!~`);
+      }
+      sayHello1("Brad", "Pitt");
+      const mySet = new Set();
+      mySet.add("John");
+      mySet.add("Jeremy");
+      for (const name of mySet) {
+        console.log(`${name}`);
+      }
+    </script>
+  </body>
+</html>

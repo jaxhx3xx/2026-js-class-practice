@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array destructuring</title>
+  </head>
+  <body>
+    <script>
+      //array destructuring : 배열 구조 분해 할당
+      //의미없는 값을 가져와 의미를 부여할 때 사용
+      function getGeolocation(addr) {
+        return [11234.4, 4570.2];
+      }
+      let [latitue, longitude] = getGeolocation();
+      console.log(latitue);
+      console.log(longitude);
+    </script>
+  </body>
+</html>

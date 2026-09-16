@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arrow function</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1. 선언함수 (선언 전 호출 가능 )
+        2. 함수표현식
+        3. 화살표함수
+        4. 함수 생성자 사용
+      */
+      function sayHello1(name = "홍길동") {
+        return "Hello " + name + "!~";
+      }
+      let sayHello2 = function sayHello(name = "홍길동") {
+        return "Hello " + name + "!~";
+      };
+      let sayHello3 = (name = "홍길동") => {
+        return "Hello " + name + "!~";
+      };
+      let sayHello4 = new Function(
+        "name = '홍길동'",
+        "return 'Hello ' + name + '!~'",
+      );
+
+      console.log(sayHello1());
+      console.log(sayHello2());
+      console.log(sayHello3());
+      console.log(sayHello4());
+    </script>
+  </body>
+</html>

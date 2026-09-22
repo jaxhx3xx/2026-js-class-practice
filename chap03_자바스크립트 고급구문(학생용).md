@@ -163,3 +163,21 @@
      - 효율적, 화면 전체를 refresh하지 않고 데이터를 전송하거나 받는 것이 가능
      - 클라이언트와 서버가 데이터 통신을 하기 위해서 XMLHttpRequest객체를 이용하여 구현
      - XMLHttpRequest객체를 이용하여 db.json 중 posts데이터 가져오기를 해보자
+     - 참고 1.
+       XMLHttpRequest 객체를 이용한 HTTP method 통신 방법
+       종류 의미 상태
+       GET 조회 200
+       POST 생성 201
+       PUT 수정 200
+       DELETE 삭제 200
+     - 참고 2.
+       a. 객체 생성 const xhr = new XMLHttpRequest();
+       b. 요청을 보낼 준비 xhr.open("GET". "http://localhost:3000/posts")
+       c. 컨텐츠 타입 설정 xhr.setRequestHeader("content-type","application/json");
+       d. 실제 요청 전송 xhr.send();
+       e. 응답이 오는 순간 동작함수는 함수 onload()작성
+       xhr.onload = () => {
+       if(xhr.status===200){
+       ...
+       }
+       }

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>xmlRequest</title>
+  </head>
+  <body>
+    <script>
+      //1. posts조회
+      const getPosts = () => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/posts");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send();
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            //response를 잘 받은경우
+            //화면에 출력
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            //실패 경우
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+      getPosts();
+      const getComments = () => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/comments");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send();
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+      getComments();
+      const getData = (endPoints) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `http://localhost:3000/${endPoints}`);
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send();
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+      getData("posts");
+      getData("comments");
+      getData("profile");
+    </script>
+  </body>
+</html>

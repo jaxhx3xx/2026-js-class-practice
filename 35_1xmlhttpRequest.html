@@ -3,64 +3,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>xmlRequest</title>
+    <title>Document</title>
   </head>
   <body>
     <script>
-      //1. posts조회
+      const url = "http://localhost:3000";
+      //1. posts 조회
       const getPosts = () => {
+        //1. 객체 생성
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:3000/posts");
+        //2. 연결
+        xhr.open("GET", url + "/posts");
+        //3. 헤더 세팅
         xhr.setRequestHeader("content-type", "application/json");
+        //4. 전송 => request
         xhr.send();
 
+        //5. response 에 대해 실행할 함수 onload
         xhr.onload = () => {
           if (xhr.status === 200) {
-            //response를 잘 받은경우
+            //response가 성공
             //화면에 출력
             const result = JSON.parse(xhr.response);
             console.log(result);
           } else {
-            //실패 경우
+            //reponse가 실패
             console.log(xhr.status, xhr.statusText);
           }
         };
       };
-      getPosts();
-      const getComments = () => {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:3000/comments");
-        xhr.setRequestHeader("content-type", "application/json");
-        xhr.send();
 
-        xhr.onload = () => {
-          if (xhr.status === 200) {
-            const result = JSON.parse(xhr.response);
-            console.log(result);
-          } else {
-            console.log(xhr.status, xhr.statusText);
-          }
-        };
-      };
-      getComments();
       const getData = (endPoints) => {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", `http://localhost:3000/${endPoints}`);
+        xhr.open("GET", url + "/" + endPoints);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send();
 
         xhr.onload = () => {
           if (xhr.status === 200) {
+            //reponse가 성공
+            //화면에 출력
             const result = JSON.parse(xhr.response);
             console.log(result);
           } else {
+            //reponse가 실패
             console.log(xhr.status, xhr.statusText);
           }
         };
       };
-      getData("posts");
-      getData("comments");
-      getData("profile");
+
+      //2. 생성
+      const postData = () => {
+        //1. 객체 생성
+        const xhr = new XMLHttpRequest();
+        //2. 연결
+        xhr.open("POST", url + "/posts");
+        //3. 헤더 세팅(:charset=UTF-8)
+        xhr.setRequestHeader("content-type", "application/json:charset=UTF-8");
+        //3-1. 생성할 데이터
+        const newData = { title: "aaa", views: "bbb" };
+
+        //4. 전송 => request(JSON.stringify(newData))
+        xhr.send(JSON.stringify(newData));
+
+        //5. response 에 대해 실행할 함수 onload
+        xhr.onload = () => {
+          if (xhr.status === 201) {
+            //response가 성공
+            //화면에 출력
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            //reponse가 실패
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+      const putData = () => {
+        //1. 객체 생성
+        const xhr = new XMLHttpRequest();
+        //2. 연결
+        xhr.open("PUT", url + "/posts/1"); //id를 삽입
+        //3. 헤더 세팅(:charset=UTF-8)
+        xhr.setRequestHeader("content-type", "application/json:charset=UTF-8");
+        //3-1. 수정할 데이터
+        const newData = { title: "JS", views: "VS-code" };
+
+        //4. 전송 => request(JSON.stringify(newData))
+        xhr.send(JSON.stringify(newData));
+
+        //5. response 에 대해 실행할 함수 onload
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            //response가 성공
+            //화면에 출력
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            //reponse가 실패
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+      //4. 삭제
+      const deleteData = () => {
+        //1. 객체 생성
+        const xhr = new XMLHttpRequest();
+        //2. 연결
+        xhr.open("DELETE", url + "/posts/1"); //id를 삽입
+        //3. 헤더 세팅(:charset=UTF-8)
+        xhr.setRequestHeader("content-type", "application/json:charset=UTF-8");
+
+        //4. 전송 => request(JSON.stringify(newData))
+        xhr.send();
+
+        //5. response 에 대해 실행할 함수 onload
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            //response가 성공
+            //화면에 출력
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            //reponse가 실패
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+      getPosts(); //post데이터 갖고오기
+      getData("posts"); //post 데이터 갖고오기
+      getData("comments"); //comments 가져오기
+      getData("profile"); //profile가져오기
+      postData(); //post추가
+      putData(); //수정
+      deleteData(); //삭제
+
+      /*문제점1.
+      결과가 순서대로 나타나진 않는다
+      왜냐하면 비동기 통신이므로..
+      send() 명령을 보내고 답이 올 때 까지 기다리지 않는다. => 단점
+      왜냐하면 순서를 지켜야 하는 로직이 있다면 어려움을 겪을 수 있다. 
+      */
     </script>
   </body>
 </html>

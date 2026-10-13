@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const url = "http://localhost:3000";
+
+      const getData = (endPoints) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url + "/" + endPoints);
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send();
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            //reponse가 성공
+            //화면에 출력
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+            return result;
+          } else {
+            //reponse가 실패
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+
+      const data = getData("comments");
+      console.log(data); //undefined
+
+      //문제점2. 비동기통신, 응답을 기다리지 않고 결과를 리턴해버림 => undefined
+      //문제점3. 결과 rendering이 매우 불편하다. (재활용이 어렵다)
+    </script>
+  </body>
+</html>
